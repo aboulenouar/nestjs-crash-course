@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './typeorm/entities/User';
+import { Profile } from './typeorm/entities/Profile';
 
 @Module({
   imports: [UsersModule, TypeOrmModule.forRoot({
@@ -11,16 +12,10 @@ import { User } from './typeorm/entities/User';
     username: 'crashcourse',
     password: 'bTeohmeN6hSe',
     database: 'crashcourse',
-    entities: [User],
+    entities: [User, Profile],
     synchronize: true,
   })],
   controllers: [],
   providers: [],
 })
 export class AppModule {}
-
-// DOCKER COMMAND TO RUN MYSQL
-// docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_DATABASE=crashcourse -e MYSQL_USER=crashcourse -e MYSQL_PASSWORD=bTeohmeN6hSe -p 3306:3306 -d mysql
-
-// DOCKER COMMAND TO GET INSIDE MYSQL CONTAINER
-//docker exec -it mysql-container mysql -uroot -prootpass

@@ -9,3 +9,9 @@ export type UpdateUserParams = {
     password: string;
     bio: string;
 }
+
+export type CreateProfileParams = {
+    firstName: string;
+    lastName: string;
+    age: number;
+}

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/typeorm/entities/User';
-import { hashPassword } from 'src/users/utils/bcrypt';
-import { CreateUserParams, UpdateUserParams } from 'src/users/utils/types';
-import { DeleteResult, Repository, UpdateResult } from 'typeorm';
+import { hashPassword } from 'src/utils/bcrypt';
+import { CreateUserParams, UpdateUserParams } from 'src/utils/types';
+import { DeleteResult, Repository } from 'typeorm';
 
 @Injectable()
 export class UsersService {
@@ -11,7 +11,7 @@ export class UsersService {
     constructor(@InjectRepository(User) private userRepository: Repository<User>) {}
     
     getUsers(): Promise<User[]> {
-        return this.userRepository.find();
+        return this.userRepository.find({relations: ['profile']});
     }
 
     createUser(userParams: CreateUserParams): Promise<User> {
