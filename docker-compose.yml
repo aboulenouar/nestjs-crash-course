@@ -15,4 +15,4 @@ services:
     ports:
       - "3306:3306"
 # DOCKER COMMAND TO GET INSIDE MYSQL CONTAINER
-# docker exec -it mysql-container mysql -uroot -proot
+# docker exec -it mysql_container mysql -uroot -proot

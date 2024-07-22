@@ -6,11 +6,14 @@ import { User } from 'src/typeorm/entities/User';
 import { ProfilesController } from './controllers/profiles/profiles.controller';
 import { ProfilesService } from './services/profiles/profiles.service';
 import { Profile } from 'src/typeorm/entities/Profile';
+import { Post } from 'src/typeorm/entities/Post';
+import { PostsController } from './controllers/posts/posts.controller';
+import { PostsService } from './services/posts/posts.service';
 
 @Module({
-  controllers: [UsersController, ProfilesController],
-  providers: [UsersService, ProfilesService],
-  imports: [TypeOrmModule.forFeature([User, Profile])]
+  controllers: [UsersController, ProfilesController, PostsController],
+  providers: [UsersService, ProfilesService, PostsService],
+  imports: [TypeOrmModule.forFeature([User, Profile, Post])]
 })
 export class UsersModule {
 

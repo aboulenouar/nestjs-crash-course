@@ -11,7 +11,7 @@ export class UsersService {
     constructor(@InjectRepository(User) private userRepository: Repository<User>) {}
     
     getUsers(): Promise<User[]> {
-        return this.userRepository.find({relations: ['profile']});
+        return this.userRepository.find({relations: ['profile', 'posts']});
     }
 
     createUser(userParams: CreateUserParams): Promise<User> {
